@@ -1,0 +1,50 @@
+<ion-header>
+    <ion-navbar>
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>Schedule</ion-title>
+        <ion-buttons end>
+            <button ion-button [disabled]="isToday" (click)="today()">Today</button>
+            <!-- <button ion-button (click)="changeMode('month')">M</button>
+            <button ion-button (click)="changeMode('week')">W</button> -->
+            <!-- <button ion-button (click)="changeMode('day')">D</button> -->
+            <!-- <button ion-button (click)="loadEvents()">Load Appointments</button> -->
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+<ion-content padding>
+    <ion-grid>
+        <ion-row>
+            <ion-col col-8>
+                <ion-item>
+                    <ion-input type="tel" value="" placeholder="Contact Number" [(ngModel)]="requestedMobile"></ion-input>
+                </ion-item>
+            </ion-col>
+            <ion-col col-4>
+                <button ion-button icon-left (click)="loadUser()">
+                    <ion-icon name="eye"></ion-icon>
+                    Appointments                    
+                </button>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+    <!-- <div [hidden]="!requestedUser.mobileNo"> -->
+        <ion-item>
+            <ion-icon name="contact" item-left large></ion-icon>
+            <h1><strong>{{ requestedUser.firstName + ' ' + requestedUser.lastName }}</strong></h1>
+        </ion-item>
+        <ion-item>
+            <ion-icon name="arrow-back" item-left (click)="previousMonth()"></ion-icon>
+            <span text-center>{{ selectedMonth | date: "MMM, y" }}</span>
+            <ion-icon name="arrow-forward" item-right (click)="nextMonth()"></ion-icon>
+        </ion-item>
+        <calendar [eventSource]="eventSource" [calendarMode]="calendar.mode" [currentDate]="calendar.currentDate" (onCurrentDateChanged)="onCurrentDateChanged($event)"
+            (onEventSelected)="onEventSelected($event)" (onTitleChanged)="onViewTitleChanged($event)" (onTimeSelected)="onTimeSelected($event)"
+            step="30">
+        </calendar>
+        <ion-fab right bottom>
+            <button ion-fab (click)="requestAppointment()"><ion-icon name="md-watch"></ion-icon></button>
+        </ion-fab>
+    <!-- </div> -->
+</ion-content>

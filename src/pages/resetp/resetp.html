@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Reset Password</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <form (submit)="resetPassword()">
+    <ion-list>
+      <ion-item>
+        <ion-label floating>Old Password</ion-label>
+        <ion-input type="password" name="oldpassword" [(ngModel)]="oldPassword"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>New Password</ion-label>
+        <ion-input type="password" name="newpassword" [(ngModel)]="newPassword"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Confirm Password</ion-label>
+        <ion-input type="password" name="confirmpassword" [(ngModel)]="confirmPassword"></ion-input>
+      </ion-item>
+    </ion-list>
+    <div padding>
+      <button ion-button color="primary" block>Reset Password</button>
+    </div>
+  </form>
+</ion-content>

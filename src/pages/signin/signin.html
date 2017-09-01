@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Sign In</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <form (submit)="SignIn()">
+    <ion-list>
+      <ion-item>
+        <ion-label floating>Mobile Number</ion-label>
+        <ion-input type="phone" name="phone" [(ngModel)]="phone"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Password</ion-label>
+        <ion-input type="password" name="phone" [(ngModel)]="password"></ion-input>
+      </ion-item>
+    </ion-list>
+    <div padding>
+      <button ion-button color="primary" block>Sign In</button>
+    </div>
+    <a (click)="RedirectSignUp()" float-left>Sign Up ?</a>
+    <a (click)="RedirectForgotPassword()" float-right>Forgot Password ?</a>
+  </form>
+</ion-content>

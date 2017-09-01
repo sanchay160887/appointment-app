@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Request Appointment</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <ion-item>
+      <ion-icon name="contact" item-left large></ion-icon>
+      <h1><strong>{{ requestedUser.firstName + ' ' + requestedUser.lastName }}</strong></h1>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Requested Date</ion-label>
+      <ion-datetime displayFormat="MMM DD YYYY" pickerFormat="MMM DD YYYY" [(ngModel)]="requestedDate"></ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Start From</ion-label>
+      <ion-datetime displayFormat="h:mm A" pickerFormat="h mm A" [(ngModel)]="startFrom"></ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Ends On</ion-label>
+      <ion-datetime displayFormat="h:mm A" pickerFormat="h mm A" [(ngModel)]="endsOn"></ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Description</ion-label>
+      <ion-textarea [(ngModel)]="description"></ion-textarea>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Privacy</ion-label>
+      <ion-select [(ngModel)]="privacy">
+        <ion-option value="public">Public</ion-option>
+        <ion-option value="private">Private</ion-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+  <div padding>
+    <button ion-button color="primary" block (click)="requestAppointment()">Request</button>
+  </div>
+</ion-content>
