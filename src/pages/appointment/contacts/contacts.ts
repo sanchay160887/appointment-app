@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, Platform } from 'ionic-angular';
-import { Contacts, Contact, ContactField, ContactName } from '@ionic-native/contacts';
+import { Contacts } from '@ionic-native/contacts';
 
 @Component({
     selector: 'page-contacts',
@@ -10,10 +10,10 @@ import { Contacts, Contact, ContactField, ContactName } from '@ionic-native/cont
 
 export class AppointmentContactPage {
 
-    public allContacts: Array<{name: string}>;
+    public allContacts: any[];
 
-    constructor(public navCtrl: NavController, private contacts: Contacts, public platform: Platform) {
-        this.allContacts = [{
+    constructor(public navCtrl: NavController, private contact: Contacts, public platform: Platform) {
+        /* this.allContacts = [{
             name: 'Sonu'
         },{
             name: 'Ali'
@@ -21,21 +21,22 @@ export class AppointmentContactPage {
             name: 'Ram'
         },{
             name: 'Ravi'
-        }];
-        /* this.platform.ready().then(() => {
+        }]; */
+        console.log(navigator);
+         this.platform.ready().then(() => {
             var opts = {   
                     filter : "M",                                
                     multiple: true,        
                     hasPhoneNumber:true,                             
                     fields:  [ 'displayName', 'name' ]
                 };
-                contacts.find([ 'displayName', 'name' ],opts).then((contacts) => {
+                this.contact.find([ 'displayName', 'name' ],opts).then((contacts) => {
                     this.allContacts = contacts;
                     console.log(contacts);
                 }, (error) => {
                     console.log(error);
                 })
-        }) */
+        }) 
     }
 
     /* AddTestingContact() {

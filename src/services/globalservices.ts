@@ -6,8 +6,8 @@ import { SignInPage } from '../pages/signin/signin';
 @Injectable()
 export class GlobalServices {
 
-  public baseUrl = 'http://localhost:4200/';
-  //public baseUrl = 'http://appntscheduler.herokuapp.com/';  
+  //public baseUrl = 'http://localhost:4200/';
+  public baseUrl = 'http://appntscheduler.herokuapp.com/';  
   public registerUserUrl = this.baseUrl + 'users/register';
   public signinUrl = this.baseUrl + 'users/signin';
   public checkSessionUrl = this.baseUrl + 'users/checkSession';
