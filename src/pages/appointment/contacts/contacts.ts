@@ -10,32 +10,35 @@ import { Contacts, Contact, ContactField, ContactName } from '@ionic-native/cont
 
 export class AppointmentContactPage {
 
-    public allContacts: any
+    public allContacts: Array<{name: string}>;
 
     constructor(public navCtrl: NavController, private contacts: Contacts, public platform: Platform) {
-        this.platform.ready().then(() => {
-       var opts = {   
-          filter : "M",                                
-          multiple: true,        
-          hasPhoneNumber:true,                             
-          fields:  [ 'displayName', 'name' ]
-        };
-        contacts.find([ 'displayName', 'name' ], opts).then((contacts) => {
-          this.allContacts = contacts;
-          console.log(contacts);
-        }, (error) => {
-          console.log(error);
-        })
-    })
-        /* this.contacts = contacts;
-        contacts.find(['displayName', 'name', 'phoneNumbers', 'emails'], { filter: "", multiple: true })
-            .then(data => {
-                this.allContacts = data
-            }); */
-
+        this.allContacts = [{
+            name: 'Sonu'
+        },{
+            name: 'Ali'
+        },{
+            name: 'Ram'
+        },{
+            name: 'Ravi'
+        }];
+        /* this.platform.ready().then(() => {
+            var opts = {   
+                    filter : "M",                                
+                    multiple: true,        
+                    hasPhoneNumber:true,                             
+                    fields:  [ 'displayName', 'name' ]
+                };
+                contacts.find([ 'displayName', 'name' ],opts).then((contacts) => {
+                    this.allContacts = contacts;
+                    console.log(contacts);
+                }, (error) => {
+                    console.log(error);
+                })
+        }) */
     }
 
-    AddTestingContact() {
+    /* AddTestingContact() {
         let contact: Contact = this.contacts.create();
 
         contact.name = new ContactName(null, 'Smith', 'John');
@@ -49,6 +52,6 @@ export class AppointmentContactPage {
             .then(data => {
                 this.allContacts = data
             });
-    }
+    } */
 
 }
