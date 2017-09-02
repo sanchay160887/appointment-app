@@ -1,18 +1,18 @@
 import { Component } from '@angular/core';
 import { NavController, Platform } from 'ionic-angular';
 import { Contacts } from '@ionic-native/contacts';
-
+import { GlobalServices } from "../../../services/globalservices";
 @Component({
     selector: 'page-contacts',
     templateUrl: 'contacts.html',
-    providers: [Contacts]
+    providers: [Contacts, GlobalServices]
 })
 
 export class AppointmentContactPage {
 
     public allContacts: any[];
 
-    constructor(public navCtrl: NavController, private contact: Contacts, public platform: Platform) {
+    constructor(public navCtrl: NavController, private contact: Contacts, public platform: Platform, private gb: GlobalServices) {
         /* this.allContacts = [{
             name: 'Sonu'
         },{
@@ -22,7 +22,6 @@ export class AppointmentContactPage {
         },{
             name: 'Ravi'
         }]; */
-        console.log(navigator);
          this.platform.ready().then(() => {
             var opts = {   
                     filter : "M",                                
@@ -30,12 +29,12 @@ export class AppointmentContactPage {
                     hasPhoneNumber:true,                             
                     fields:  [ 'displayName', 'name' ]
                 };
-                this.contact.find([ 'displayName', 'name' ],opts).then((contacts) => {
-                    this.allContacts = contacts;
-                    console.log(contacts);
-                }, (error) => {
-                    console.log(error);
-                })
+            this.contact.find([ 'displayName', 'name' ],opts).then((contacts) => {
+                this.allContacts = contacts;
+                this.gb.presentToast('Please enter Mobile Number');
+            }, (error) => {
+                this.gb.presentToast(error);
+            })
         }) 
     }
 
