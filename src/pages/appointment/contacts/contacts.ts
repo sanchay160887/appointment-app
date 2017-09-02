@@ -20,7 +20,7 @@ export class AppointmentContactPage {
           hasPhoneNumber:true,                             
           fields:  [ 'displayName', 'name' ]
         };
-        contacts.find([ 'displayName', 'name' ],opts).then((contacts) => {
+        contacts.find([ 'displayName', 'name' ], opts).then((contacts) => {
           this.allContacts = contacts;
           console.log(contacts);
         }, (error) => {
